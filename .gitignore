@@ -40,3 +40,5 @@ public
 resume.json
 resume_*.json
 resume.pdf
+
+.vscode/
