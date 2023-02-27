@@ -1,5 +1,5 @@
 import { render } from 'preact-render-to-string';
-import { Resume } from './resume'
+import { Resume } from './components/resume'
 import type { ResumeSchema } from './types/resume'
 
 function resumeRender(resume: ResumeSchema): string {
