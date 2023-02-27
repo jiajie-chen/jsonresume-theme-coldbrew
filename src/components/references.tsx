@@ -1,10 +1,11 @@
+import { Title } from "./partials/title";
 
 export function References() {
   return (
     <>
       {/* {{#if resume.references.length}} */}
       <div class="container references-container">
-        {/* {{> title value="References"}} */}
+        <Title value="References" />
 
         {/* {{#each resume.references}} */}
         <section class="item clearfix">
@@ -22,7 +23,6 @@ export function References() {
         {/* {{/each}} */}
       </div>
       {/* {{/if}} */}
-
     </>
   )
 }

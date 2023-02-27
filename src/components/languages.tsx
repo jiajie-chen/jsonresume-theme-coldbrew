@@ -1,10 +1,11 @@
+import { Title } from "./partials/title";
 
 export function Languages() {
   return (
     <>
       {/* {{#if resume.languages.length}} */}
       <div class="container languages-container">
-        {/* {{> title value="Languages"}} */}
+        <Title value="Languages" />
 
         <ul class="minimal">
           {/* {{#each resume.languages}} */}
@@ -15,7 +16,6 @@ export function Languages() {
         </ul>
       </div>
       {/* {{/if}} */}
-
     </>
   )
 }

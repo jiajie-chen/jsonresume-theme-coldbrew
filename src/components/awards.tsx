@@ -1,10 +1,11 @@
+import { Title } from "./partials/title";
 
 export function Awards() {
   return (
     <>
       {/* {{#if resume.awards.length}} */}
       <div class="container awards-container">
-        {/* {{> title value="Awards"}} */}
+        <Title value="Awards" />
 
         {/* {{#each resume.awards}} */}
           <section class="item">
@@ -21,7 +22,6 @@ export function Awards() {
         {/* {{/each}} */}
       </div>
       {/* {{/if}} */}
-
     </>
   )
 }

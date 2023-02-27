@@ -1,10 +1,11 @@
+import type { ResumeBasicsProps } from "../types/resume-basics";
+import { Title } from "./partials/title";
 
-export function About() {
+export function About({ resumeBasics }: ResumeBasicsProps) {
   return (
     <>
-      {/* {{#resume.basics}} */}
-      <div class="container about-container">
-        {/* {{> title value="About"}} */}
+      <section class="container about-container">
+        <Title value="About" />
 
         {/* {{#if location}} */}
           {/* {{#location}} */}
@@ -30,8 +31,6 @@ export function About() {
           {/* {{/each}} */}
         {/* {{/if}} */}
       </section>
-      {/* {{/resume.basics}} */}
-
     </>
   )
 }

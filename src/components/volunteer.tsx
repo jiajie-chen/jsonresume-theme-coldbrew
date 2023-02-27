@@ -1,10 +1,11 @@
+import { Title } from "./partials/title";
 
 export function Volunteer() {
   return (
     <>
       {/* {{#if resume.volunteer.length}} */}
       <div class="container volunteer-container">
-        {/* {{> title value="Volunteer"}} */}
+        <Title value="Volunteer"/>
 
         {/* {{#each resume.volunteer}} */}
         <section class="item">
@@ -28,7 +29,6 @@ export function Volunteer() {
         {/* {{/each}} */}
       </div>
       {/* {{/if}} */}
-
     </>
   )
 }

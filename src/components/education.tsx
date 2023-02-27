@@ -1,10 +1,12 @@
+import { Title } from "./partials/title";
 
 export function Education() {
   return (
     <>
       {/* {{#if resume.education.length}} */}
       <div class="container education-container">
-        {/* {{> title value="Education"}} */} {/* {{#each resume.education}} */}
+        <Title value="Education" />
+        {/* {{#each resume.education}} */}
         <section class="item">
           {/* {{> section-header name=this.institution }} */}
           {/* {{#if location}} */}
@@ -30,7 +32,6 @@ export function Education() {
         {/* {{/each}} */}
       </div>
       {/* {{/if}} */}
-
     </>
   )
 }

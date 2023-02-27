@@ -1,21 +1,28 @@
+import type { ResumeBasicsProps } from "../types/resume-basics";
 
-export function ResumeHeader() {
+export function ResumeHeader({ resumeBasics }: ResumeBasicsProps) {
+  const resumeName = resumeBasics?.name || ''
+  const resumeLabel = resumeBasics?.label || ''
+  const resumePicture = resumeBasics?.image
+
+  let pictureTag = null
+  if (resumePicture !== undefined) {
+    pictureTag = (
+      <div class="profile-pic pull-right">
+          <img src={resumePicture} alt="profile-pic"/>
+      </div>
+    )
+  }
+
   return (
     <>
-      {/* {{#resume.basics}} */}
       <header class="resume-header clearfix">
         <div class="profile-header pull-left">
-          <h1>{/* {{name}} */}</h1>
-          <h2>{/* {{label}} */}</h2>
+          <h1>{resumeName}</h1>
+          <h2>{resumeLabel}</h2>
         </div>
-        <div class="profile-pic pull-right">
-          {/* {{#if picture}} */}
-            <img src="{/* {{picture}} */}" alt="profile-pic">
-          {/* {{/if}} */}
-        </div>
+        {pictureTag}
       </header>
-      {/* {{/resume.basics}} */}
-
     </>
   )
 }
