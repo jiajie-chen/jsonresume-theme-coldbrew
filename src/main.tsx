@@ -1,5 +1,5 @@
 import { render } from 'preact-render-to-string';
-import { Resume } from './components/resume'
+import { Resume } from './resume'
 import type { ResumeSchema } from './types/resume'
 
 function resumeRender(resume: ResumeSchema): string {
@@ -9,6 +9,7 @@ function resumeRender(resume: ResumeSchema): string {
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui" />
             <title>JSONResume</title>
+            {/*  TODO: remove and replace with package/asset */}
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         </head>
         <body>

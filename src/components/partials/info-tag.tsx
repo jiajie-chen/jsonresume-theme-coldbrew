@@ -1,23 +1,32 @@
+import { removeProtocol } from "../../helpers/utils"
 
-export function InfoTag() {
+type InfoTagProps = {
+  icon?: string
+  url?: string
+  text: string
+}
+
+export function InfoTag({ icon, url, text }: InfoTagProps) {
+  let iconTag = null
+  if (icon !== undefined) {
+    iconTag = <i class={`fa ${icon}`}></i>
+  }
+
+  let infoTextInner = <>{text}</>
+  if (url !== undefined) {
+    infoTextInner = (
+      <a href={url} target="_blank">
+        {removeProtocol(text)} <i class="fa fa-external-link" aria-hidden="true"></i>
+      </a>
+    )
+  }
+
   return (
     <>
       <div class="info-tag-container">
-        {/* {{#if icon}} */}
-        <i class="fa {/* {{icon}} */}"></i>
-        {/* {{/if}} */}
-
-        {/* {{#if url}} */}
-        <h6 class="info-text">
-          <a href="{/* {{url}} */}" target="_blank">
-            {/* {{removeProtocol text}} */} <i class="fa fa-external-link" aria-hidden="true"></i>
-          </a>
-        </h6>
-        {/* {{else}} */}
-        <h6 class="info-text">{{/* {{text}} */}}</h6>
-        {/* {{/if}} */}
+        {iconTag}
+        <h6 class="info-text">{infoTextInner}</h6>
       </div>
-
     </>
   )
 }
