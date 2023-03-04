@@ -1,28 +1,40 @@
 import type { ResumeBasicsProps } from "../types/resume-basics";
 
 export function ResumeHeader({ resumeBasics }: ResumeBasicsProps) {
-  const resumeName = resumeBasics?.name || ''
-  const resumeLabel = resumeBasics?.label || ''
-  const resumePicture = resumeBasics?.image
+  let nameTag = null
+  if (resumeBasics?.name !== undefined) {
+    nameTag = <h1>{resumeBasics.name}</h1>
+  }
+
+  let labelTag = null
+  if (resumeBasics?.label !== undefined) {
+    labelTag = <h2>{resumeBasics.label}</h2>
+  }
 
   let pictureTag = null
-  if (resumePicture !== undefined) {
+  if (resumeBasics?.image !== undefined) {
     pictureTag = (
       <div class="profile-pic pull-right">
-          <img src={resumePicture} alt="profile-pic"/>
+          <img src={resumeBasics.image} alt="profile-pic"/>
       </div>
     )
   }
 
+  let pronounsTag = null
+  if (resumeBasics?.pronouns !== undefined) {
+    pronounsTag = <h2>{resumeBasics.pronouns}</h2>
+  }
+
   return (
-    <>
-      <header class="resume-header clearfix">
-        <div class="profile-header pull-left">
-          <h1>{resumeName}</h1>
-          <h2>{resumeLabel}</h2>
+    <header class="resume-header clearfix">
+      <div class="profile-header pull-left">
+        {nameTag}
+        <div class="two-column">
+          {labelTag}
+          {pronounsTag}
         </div>
-        {pictureTag}
-      </header>
-    </>
+      </div>
+      {pictureTag}
+    </header>
   )
 }

@@ -1,28 +1,45 @@
+import { ResumeSchema } from "../types/resume";
 import { Title } from "./partials/title";
 
-export function References() {
+type ReferencesProps = {
+  resumeReferences?: ResumeSchema['references']
+}
+
+export function References({ resumeReferences }: ReferencesProps) {
+  if (resumeReferences === undefined || resumeReferences.length == 0) {
+    return null
+  }
+
+  const referenceItems = resumeReferences.map(ref => {
+    let referenceTag = null
+    if (ref.reference !== undefined) {
+      referenceTag = (
+        <>
+          <i class="fa fa-quote-left pull-left" aria-hidden="true"/>
+          <blockquote>
+            {ref.reference}
+          </blockquote>
+        </>
+      )
+    }
+
+    let nameTag = null
+    if (ref.name !== undefined) {
+      nameTag = <h5 class="pull-right"> — {ref.name}</h5>
+    }
+
+    return (
+      <section class="item clearfix">
+        {referenceTag}
+        {nameTag}
+      </section>
+    )
+  })
+
   return (
-    <>
-      {/* {{#if resume.references.length}} */}
-      <div class="container references-container">
-        <Title value="References" />
-
-        {/* {{#each resume.references}} */}
-        <section class="item clearfix">
-          {/* {{#if reference}} */}
-            <i class="fa fa-quote-left pull-left" aria-hidden="true"></i>
-            <blockquote>
-              {/* {{reference}} */}
-            </blockquote>
-          {/* {{/if}} */}
-
-          {/* {{#if name}} */}
-            <h5 class="pull-right"> — {/* {{name}} */}</h5>
-          {/* {{/if}} */}
-        </section>
-        {/* {{/each}} */}
-      </div>
-      {/* {{/if}} */}
-    </>
+    <div class="container references-container">
+      <Title value="References" />
+      {referenceItems}
+    </div>
   )
 }

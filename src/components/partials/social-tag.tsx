@@ -1,4 +1,4 @@
-import { InfoTag } from "./info-tag"
+import { InfoTextTag } from "./info-tag"
 
 type SocialTagProps = {
   network?: string
@@ -13,10 +13,10 @@ export function SocialTag({ network, username }: SocialTagProps) {
 
   let tagText = username
   let iconClass = `fa-${network.toLowerCase()}`
-  if (network.toLowerCase() == "linkedin") {
+  if (network.toLowerCase() === "linkedin") {
     tagText = `in/${tagText}`
     iconClass = 'fa-linkedin-square'
   }
 
-  return  <InfoTag text={tagText} icon={iconClass} />
+  return  <InfoTextTag icon={iconClass}>{tagText}</InfoTextTag>
 }

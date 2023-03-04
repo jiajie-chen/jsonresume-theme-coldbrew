@@ -1,6 +1,6 @@
 import { formatDate } from "../../helpers/utils"
 
-type SectionHeaderProp = {
+type SectionHeaderProps = {
   name?: string
   website?: string
   // TODO: release date is mutually exclusive - reflect in type
@@ -9,7 +9,7 @@ type SectionHeaderProp = {
   releaseDate?: string
 }
 
-export function SectionHeader({name, website, startDate, endDate, releaseDate}: SectionHeaderProp) {
+export function SectionHeader({name, website, startDate, endDate, releaseDate}: SectionHeaderProps) {
   let nameTag = null
   if (name !== undefined) {
     let nameInner = <>{name}</>
@@ -40,13 +40,11 @@ export function SectionHeader({name, website, startDate, endDate, releaseDate}: 
   // TODO: case where name and date === null
 
   return (
-    <>
-      <div class="section-header clearfix">
-        {nameTag}
-        <h5 class="italic pull-right">
-          {dateInner}
-        </h5>
-      </div>
-    </>
+    <div class="section-header clearfix">
+      {nameTag}
+      <h5 class="italic pull-right">
+        {dateInner}
+      </h5>
+    </div>
   )
 }

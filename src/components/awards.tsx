@@ -1,27 +1,42 @@
+import { ResumeSchema } from "../types/resume";
+import { SectionHeader } from "./partials/section-header";
 import { Title } from "./partials/title";
 
-export function Awards() {
+type AwardsProps = {
+  resumeAwards: ResumeSchema['awards']
+}
+
+export function Awards({ resumeAwards }: AwardsProps) {
+  if (resumeAwards === undefined || resumeAwards.length == 0) {
+    return null
+  }
+
+  const awardItems = resumeAwards.map(award => {
+    const awardHeader = <SectionHeader name={award.title} releaseDate={award.date}/>
+
+    let awarderTag = null
+    if (award.awarder !== undefined) {
+      awarderTag = <h5 class="awarder">{award.awarder}</h5>
+    }
+
+    let summaryTag = null
+    if (award.summary !== undefined) {
+      summaryTag = <p class="summary">{award.summary}</p>
+    }
+
+    return (
+      <section class="item">
+        {awardHeader}
+        {awarderTag}
+        {summaryTag}
+      </section>
+    )
+  })
+
   return (
-    <>
-      {/* {{#if resume.awards.length}} */}
-      <div class="container awards-container">
-        <Title value="Awards" />
-
-        {/* {{#each resume.awards}} */}
-          <section class="item">
-            {/* {{> section-header name=this.title }} */}
-
-            {/* {{#if awarder}} */}
-              <h5 class="awarder">{/* {{awarder}} */}</h5>
-            {/* {{/if}} */}
-
-            {/* {{#if summary}} */}
-              <p class="summary">{/* {{summary}} */}</p>
-            {/* {{/if}} */}
-          </section>
-        {/* {{/each}} */}
-      </div>
-      {/* {{/if}} */}
-    </>
+    <div class="container awards-container">
+      <Title value="Awards" />
+      {awardItems}
+    </div>
   )
 }

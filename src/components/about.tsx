@@ -1,36 +1,66 @@
+import type { Country } from "@shopify/address";
+import { formatAddress } from "../helpers/utils";
 import type { ResumeBasicsProps } from "../types/resume-basics";
+import { InfoTag, InfoTextTag } from "./partials/info-tag";
+import { SocialTag } from "./partials/social-tag";
 import { Title } from "./partials/title";
 
-export function About({ resumeBasics }: ResumeBasicsProps) {
+type AboutProps = ResumeBasicsProps & {
+  countryFormatters: Country[]
+}
+
+export function About({ resumeBasics, countryFormatters }: AboutProps) {
+  let locationTag = null
+  if (resumeBasics?.location !== undefined) {
+    const location = resumeBasics.location
+    const formattedAddress = formatAddress(
+      location.address || '',
+      location.city || '',
+      location.region || '',
+      location.postalCode || '',
+      location.countryCode || '',
+      countryFormatters,
+    ).filter(a => (a.length > 0))
+
+    locationTag = (
+      <InfoTag icon="fa-map-marker">
+        {/* add line break to each address line */}
+        {formattedAddress.map(a => <>{a}<br/></>)}
+      </InfoTag>
+    )
+  }
+
+  let emailTag = null
+  if (resumeBasics?.email !== undefined) {
+    emailTag = <InfoTextTag icon="fa-envelope-o">{resumeBasics.email}</InfoTextTag>
+  }
+
+  let phoneTag = null
+  if (resumeBasics?.phone !== undefined) {
+    phoneTag = <InfoTextTag icon="fa-mobile">{resumeBasics.phone}</InfoTextTag>
+  }
+
+  let websiteTag = null
+  if (resumeBasics?.url !== undefined) {
+    websiteTag = <InfoTextTag icon="fa-desktop" url={resumeBasics.url}>{resumeBasics.url}</InfoTextTag>
+  }
+
+  let socialProfileItems = null
+  if (resumeBasics?.profiles !== undefined) {
+    socialProfileItems = resumeBasics.profiles.map((social) => {
+      return <SocialTag username={social.username} network={social.network}/>
+    })
+  }
+
   return (
-    <>
-      <section class="container about-container">
-        <Title value="About" />
+    <section class="container about-container">
+      <Title value="About" />
 
-        {/* {{#if location}} */}
-          {/* {{#location}} */}
-          {/* {{> info-tag text=(formatAddress address city region postalCode countryCode) icon="fa-map-marker"}} */}
-          {/* {{/location}} */}
-        {/* {{/if}} */}
-
-        {/* {{#if email}} */}
-          {/* {{> info-tag text=this.email icon="fa-envelope-o"}} */}
-        {/* {{/if}} */}
-
-        {/* {{#if phone}} */}
-          {/* {{> info-tag text=this.phone icon="fa-mobile"}} */}
-        {/* {{/if}} */}
-
-        {/* {{#if website}} */}
-          {/* {{> info-tag text=this.website icon="fa-desktop" url=this.website}} */}
-        {/* {{/if}} */}
-
-        {/* {{#if profiles}} */}
-          {/* {{#each profiles}} */}
-              {/* {{> social}} */}
-          {/* {{/each}} */}
-        {/* {{/if}} */}
-      </section>
-    </>
+      {locationTag}
+      {emailTag}
+      {phoneTag}
+      {websiteTag}
+      {socialProfileItems}
+    </section>
   )
 }

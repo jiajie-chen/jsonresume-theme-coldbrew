@@ -1,11 +1,18 @@
 {
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "meta": {
+    "coldbrewTheme": {
+      "locale": "en"
+    }
+  },
   "basics": {
     "name": "Richard Hendriks",
+    "pronouns": "He/Him",
     "label": "Programmer",
-    "picture": "http://www.piedpiper.com/app/themes/pied-piper/dist/images/richard.png",
+    "image": "https://vignette.wikia.nocookie.net/silicon-valley/images/3/33/Richard_Hendricks.jpg",
     "email": "richard.hendriks@piedpiper.com",
     "phone": "(912) 555-4321",
-    "website": "http://piedpiper.com",
+    "url": "http://piedpiper.com",
     "summary": "Richard hails from Tulsa. He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinals!) Before starting Pied Piper, he worked for Hooli as a part time software developer. While his work focuses on applied information theory, mostly optimizing lossless compression schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from quantum computing to chaos theory. He could tell you about it, but THAT would NOT be a “length-limited” conversation!",
     "location": {
       "address": "Newell Road",
@@ -34,9 +41,9 @@
   },
   "work": [
     {
-      "company": "Pied Piper",
+      "name": "Pied Piper",
       "position": "CEO/President",
-      "website": "http://piedpiper.com",
+      "url": "http://piedpiper.com",
       "startDate": "2014-04-13",
       "summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
       "highlights": [
@@ -46,9 +53,9 @@
       ]
     },
     {
-      "company": "Hooli",
+      "name": "Hooli",
       "position": "Software Engineer",
-      "website": "http://www.hooli.xyz/",
+      "url": "http://www.hooli.xyz/",
       "startDate": "2013-01-01",
       "endDate": "2014-04-06",
       "summary": "Worked on optimizing the backend algorithms for Hooli"
@@ -76,7 +83,7 @@
       "specialization": "Machine Learning",
       "startDate": "2011-06-01",
       "endDate": "2014-01-01",
-      "gpa": "GPA 4.0",
+      "score": "GPA 4.0",
       "courses": [
         "DB1101 - Basic SQL",
         "CS2011 - Java Introduction"

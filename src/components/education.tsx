@@ -1,37 +1,69 @@
+import type { ResumeEducation } from "../types/resume-education";
+import { SectionHeader } from "./partials/section-header";
 import { Title } from "./partials/title";
 
-export function Education() {
+type EducationProps = {
+  resumeEducation?: ResumeEducation
+}
+
+export function Education({ resumeEducation }: EducationProps) {
+  if (resumeEducation === undefined || resumeEducation.length == 0) {
+    return null
+  }
+
+  const educationItems = resumeEducation.map(education => {
+    let locationTag = null
+    if (education.location !== undefined) {
+      locationTag = <h5 class="location">{education.location}</h5>
+    }
+
+    let studyAreaText = []
+    if (education.studyType !== undefined) {
+      studyAreaText.push(education.studyType)
+    }
+    if (education.area !== undefined) {
+      studyAreaText.push(education.area)
+    }
+    let studyAreaTag = null
+    if (studyAreaText.length > 0) {
+      studyAreaTag = <h4>{studyAreaText.join(' ')}</h4>
+    }
+
+    let scoreTag = null
+    if (education.score !== undefined) {
+      scoreTag = <h5>{education.score}</h5>
+    }
+
+    let specializationTag = null
+    if(education.specialization !== undefined) {
+      <h5 class="specialization">{education.specialization}</h5>
+    }
+
+    let courseItems = null
+    if (education.courses !== undefined && education.courses.length > 0) {
+      courseItems = (
+        <ul class="two-column">
+          {education.courses.map(course => <li>{course}</li>)}
+        </ul>
+      )
+    }
+
+    return (
+      <section class="item">
+        <SectionHeader name={education.institution} startDate={education.startDate} endDate={education.endDate} website={education.url}/>
+        {locationTag}
+        {studyAreaTag}
+        {scoreTag}
+        {specializationTag}
+        {courseItems}
+    </section>
+    )
+  })
+
   return (
-    <>
-      {/* {{#if resume.education.length}} */}
       <div class="container education-container">
         <Title value="Education" />
-        {/* {{#each resume.education}} */}
-        <section class="item">
-          {/* {{> section-header name=this.institution }} */}
-          {/* {{#if location}} */}
-            <h5 class="location">{/* {{location}} */}</h5>
-          {/* {{/if}} */}
-
-          <h4>{/* {{#if studyType}} */}{/* {{studyType}} */} {/* {{/if}} */}{/* {{#if area}} */}{/* {{area}} */}{/* {{/if}} */}</h4>
-
-          {/* {{#if gpa}} */}
-            <h5>{/* {{gpa}} */}</h5>
-          {/* {{/if}} */}
-          {/* {{#if specialization}} */}
-            <h5 class="specialization">{/* {{specialization}} */}</h5>
-          {/* {{/if}} */}
-          {/* {{#if courses.length}} */}
-            <ul class="two-column">
-              {/* {{#each courses}} */}
-              <li>{/* {{.}} */}</li>
-              {/* {{/each}} */}
-            </ul>
-          {/* {{/if}} */}
-        </section>
-        {/* {{/each}} */}
+        {educationItems}
       </div>
-      {/* {{/if}} */}
-    </>
   )
 }

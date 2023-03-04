@@ -1,3 +1,4 @@
+import type { Country } from '@shopify/address';
 import { About } from './components/about';
 import { Awards } from './components/awards';
 import { Education } from './components/education';
@@ -15,32 +16,31 @@ import type { ResumeSchema } from './types/resume'
 
 type ResumeProps = {
   resume: ResumeSchema;
+  countryFormatters: Country[]
 };
 
 // TODO: translate Handlebars to: components, partials
-export function Resume({ resume }: ResumeProps) {
+export function Resume({ resume, countryFormatters }: ResumeProps) {
   return (
-    <>
-      <main id="resume" class="page">
-        <ResumeHeader resumeBasics={resume.basics}/>
-        <div class="resume-content">
-          <aside class="left-column">
-            <About resumeBasics={resume.basics}/>
-            <Skills />
-            <Languages />
-            <Interests />
-          </aside>
-          <div class="right-column">
-            <Summary />
-            <Work />
-            <Volunteer />
-            <Education />
-            <Awards />
-            <Publications />
-            <References />
-          </div>
+    <main id="resume" class="page">
+      <ResumeHeader resumeBasics={resume.basics}/>
+      <div class="resume-content">
+        <aside class="left-column">
+          <About resumeBasics={resume.basics} countryFormatters={countryFormatters}/>
+          <Skills resumeSkills={resume.skills}/>
+          <Languages resumeLanguages={resume.languages}/>
+          <Interests resumeInterests={resume.interests}/>
+        </aside>
+        <div class="right-column">
+          <Summary resumeSummary={resume.basics?.summary}/>
+          <Work resumeWork={resume.work}/>
+          <Volunteer resumeVolunteer={resume.volunteer}/>
+          <Education resumeEducation={resume.education}/>
+          <Awards resumeAwards={resume.awards}/>
+          <Publications resumePublications={resume.publications}/>
+          <References resumeReferences={resume.references}/>
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   )
 }

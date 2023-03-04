@@ -1,10 +1,17 @@
-import { render } from 'preact-render-to-string';
+import { render as preactRender } from 'preact-render-to-string';
+import { loadCountryFormatters } from './helpers/utils';
 import { Resume } from './resume'
 import type { ResumeSchema } from './types/resume'
+import { ColdbrewResumeMeta } from './types/resume-meta';
 
-function resumeRender(resume: ResumeSchema): string {
+async function resumeRender(resume: ResumeSchema): Promise<string> {
+    const coldbrewMeta = resume.meta as ColdbrewResumeMeta | undefined
+    const locale = coldbrewMeta?.coldbrewTheme?.locale ?? "en"
+
+    const localeCountries = await loadCountryFormatters(locale)
+
     let resumeHtml = (
-        <html lang="en">
+        <html lang={locale}>
         <head>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui" />
@@ -13,11 +20,11 @@ function resumeRender(resume: ResumeSchema): string {
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         </head>
         <body>
-            <Resume resume={resume}/>
+            <Resume resume={resume} countryFormatters={localeCountries}/>
         </body>
         </html>
     )
-    return render(resumeHtml)
+    return preactRender(resumeHtml)
 }
 
 export default {

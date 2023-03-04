@@ -1,18 +1,21 @@
+import { ResumeSchema } from "../types/resume";
 import { Title } from "./partials/title";
 
-export function Summary() {
+type SummaryProps = {
+  resumeSummary: Exclude<ResumeSchema['basics'], undefined>['summary']
+}
+
+export function Summary({ resumeSummary }: SummaryProps) {
+  if (resumeSummary === undefined) {
+    return null
+  }
+
   return (
-    <>
-      {/* {{#resume.basics}} */}
-      {/* {{#if summary}} */}
-      <div class="container summary-container">
-        <Title value="Summary" />
-        <p class="summary">
-          {/* {{summary}} */}
-        </p>
-      </div>
-      {/* {{/if}} */}
-      {/* {{/resume.basics}} */}
-    </>
+    <div class="container summary-container">
+      <Title value="Summary" />
+      <p class="summary">
+        {resumeSummary}
+      </p>
+    </div>
   )
 }

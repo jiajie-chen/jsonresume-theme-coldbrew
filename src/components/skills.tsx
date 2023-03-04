@@ -1,31 +1,47 @@
+import { ResumeSchema } from "../types/resume"
+import { Title } from "./partials/title"
 
-export function Skills() {
+type SkillsProps = {
+  resumeSkills?: ResumeSchema['skills']
+}
+
+export function Skills({ resumeSkills }: SkillsProps) {
+  if (resumeSkills === undefined || resumeSkills.length == 0) {
+    return null
+  }
+
+  const skillsItems = resumeSkills.map(skill => {
+    let nameTag = null
+    if (skill.name !== undefined) {
+      nameTag = <Title value={skill.name}/>
+    }
+
+    let levelTag = null
+    if (skill.level !== undefined) {
+      levelTag = <h4 class="bold">{skill.level}</h4>
+    }
+
+    let keywordItems = null
+    if (skill.keywords !== undefined && skill.keywords.length > 0) {
+      keywordItems = (
+        <ul class="minimal">
+          {skill.keywords.map(keyword => <li><h6>{keyword}</h6></li>)}
+        </ul>
+      )
+    }
+
+    return (
+      <section class="container">
+        {nameTag}
+        {levelTag}
+        {keywordItems}
+      </section>
+    )
+  })
+
   return (
-    <>
-      {/* {{#if resume.skills.length}} */}
-      <div class="skills-container">
-        {/* {{#each resume.skills}} */}
-        <section class="container">
-          {/* {{#if name}} */}
-            {/* {{> title value=name}} */}
-          {/* {{/if}} */}
-          {/* {{#if level}} */}
-            <h4 class="bold">{/* {{level}} */}</h4>
-          {/* {{/if}} */}
-          {/* {{#if keywords.length}} */}
-            <ul class="minimal">
-              {/* {{#each keywords}} */}
-              <li>
-                <h6>{/* {{.}} */}</h6>
-              </li>
-              {/* {{/each}} */}
-            </ul>
-          {/* {{/if}} */}
-        </section>
-        {/* {{/each}} */}
-      </div>
-      {/* {{/if}} */}
-
-    </>
+    <div class="skills-container">
+      {skillsItems}
+    </div>
   )
 }
