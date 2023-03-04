@@ -15,7 +15,12 @@
     "url": "https://github.com/jiajie-chen/jsonresume-theme-coldbrew"
   },
   "license": "MIT",
-  "//": "// TODO: exports to cjs or umd",
+  "module": "./dist/main.js",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -24,17 +29,19 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
-    "@shopify/address": "^4.0.6",
     "@types/luxon": "^3.2.0",
     "json-schema-to-typescript": "^12.0.0",
-    "luxon": "^3.2.1",
-    "preact": "^10.13.0",
-    "preact-render-to-string": "^5.2.6",
     "prettier": "^2.8.4",
     "resume-schema": "^1.0.0",
     "resumed": "^3.0.1",
     "sass": "^1.58.3",
     "typescript": "^4.9.5",
     "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "luxon": "^3.2.1",
+    "preact": "^10.13.0",
+    "preact-render-to-string": "^5.2.6",
+    "@shopify/address": "^4.0.6"
   }
 }

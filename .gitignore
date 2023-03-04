@@ -42,3 +42,5 @@ resume_*.json
 resume.pdf
 
 .vscode/
+
+dist

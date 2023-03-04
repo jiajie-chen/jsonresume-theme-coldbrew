@@ -11,7 +11,6 @@ import { Skills } from './components/skills';
 import { Summary } from './components/summary';
 import { Volunteer } from './components/volunteer';
 import { Work } from './components/work';
-import './styles/main.scss';
 import type { ResumeSchema } from './types/resume'
 
 type ResumeProps = {
@@ -19,7 +18,6 @@ type ResumeProps = {
   countryFormatters: Country[]
 };
 
-// TODO: translate Handlebars to: components, partials
 export function Resume({ resume, countryFormatters }: ResumeProps) {
   return (
     <main id="resume" class="page">

@@ -3,9 +3,11 @@ import { loadCountryFormatters } from './helpers/utils';
 import { Resume } from './resume'
 import type { ResumeSchema } from './types/resume'
 import { ColdbrewResumeMeta } from './types/resume-meta';
+import resumeStyle from './styles/main.scss?inline'
 
-async function resumeRender(resume: ResumeSchema): Promise<string> {
-    const coldbrewMeta = resume.meta as ColdbrewResumeMeta | undefined
+export async function render(resume: ResumeSchema | object): Promise<string> {
+    let _resume = resume as ResumeSchema
+    const coldbrewMeta = _resume.meta as ColdbrewResumeMeta | undefined
     const locale = coldbrewMeta?.coldbrewTheme?.locale ?? "en"
 
     const localeCountries = await loadCountryFormatters(locale)
@@ -18,6 +20,8 @@ async function resumeRender(resume: ResumeSchema): Promise<string> {
             <title>JSONResume</title>
             {/*  TODO: remove and replace with package/asset */}
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+            {/* HACK: inject inline CSS via dangerouslySetInnerHTML */}
+            <style dangerouslySetInnerHTML={{ __html: resumeStyle}}></style>
         </head>
         <body>
             <Resume resume={resume} countryFormatters={localeCountries}/>
@@ -25,8 +29,4 @@ async function resumeRender(resume: ResumeSchema): Promise<string> {
         </html>
     )
     return preactRender(resumeHtml)
-}
-
-export default {
-    render: resumeRender
 }
