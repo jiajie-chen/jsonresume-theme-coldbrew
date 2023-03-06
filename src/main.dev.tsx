@@ -8,7 +8,10 @@ import './styles/main.scss'
 
 const sampleResume = sampleResumeJson as ResumeSchema
 const coldbrewMeta = sampleResume.meta as ColdbrewResumeMeta | undefined
-const locale = coldbrewMeta?.coldbrewTheme?.locale || "en"
+const locale = coldbrewMeta?.coldbrewTheme?.locale || 'en'
 const localeCountries = await loadCountryFormatters(locale)
 
-render(<Resume resume={sampleResume} countryFormatters={localeCountries}/>, document.body as HTMLElement)
+render(
+    <Resume resume={sampleResume} countryFormatters={localeCountries} />,
+    document.body as HTMLElement
+)
