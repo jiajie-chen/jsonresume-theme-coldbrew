@@ -15,7 +15,7 @@ type InfoTagProps = {
 export function InfoTag({ icon, children }: InfoTagProps) {
     let iconTag = null
     if (icon !== undefined) {
-        iconTag = <i class={`fa ${icon}`}></i>
+        iconTag = <i class={`fa ${icon}`} />
     }
 
     return (
@@ -33,9 +33,9 @@ export function InfoTextTag({ icon, url, children }: InfoTagTextProps) {
             infoTextInner = <>{children}</>
         } else {
             infoTextInner = (
-                <a href={url} target="_blank">
+                <a href={url} target="_blank" rel="noreferrer">
                     {removeProtocol(children)}{' '}
-                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                    <i class="fa fa-external-link" aria-hidden="true" />
                 </a>
             )
         }

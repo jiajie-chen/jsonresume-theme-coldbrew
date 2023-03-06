@@ -11,7 +11,7 @@ export function Volunteer({ resumeVolunteer }: VolunteerProps) {
         return null
     }
 
-    const volunteerItems = resumeVolunteer.map((volunteer) => {
+    const volunteerItems = resumeVolunteer.map((volunteer, i) => {
         let positionTag = null
         if (volunteer.position !== undefined) {
             positionTag = <h5>{volunteer.position}</h5>
@@ -29,14 +29,14 @@ export function Volunteer({ resumeVolunteer }: VolunteerProps) {
         ) {
             highlightItems = (
                 <ul>
-                    {volunteer.highlights.map((highlight) => (
-                        <li>{highlight}</li>
+                    {volunteer.highlights.map((highlight, i) => (
+                        <li key={i}>{highlight}</li>
                     ))}
                 </ul>
             )
         }
         return (
-            <section class="item">
+            <section class="item" key={i}>
                 <SectionHeader
                     name={volunteer.organization}
                     startDate={volunteer.startDate}

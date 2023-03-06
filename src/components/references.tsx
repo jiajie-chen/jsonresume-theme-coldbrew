@@ -10,7 +10,7 @@ export function References({ resumeReferences }: ReferencesProps) {
         return null
     }
 
-    const referenceItems = resumeReferences.map((ref) => {
+    const referenceItems = resumeReferences.map((ref, i) => {
         let referenceTag = null
         if (ref.reference !== undefined) {
             referenceTag = (
@@ -27,7 +27,7 @@ export function References({ resumeReferences }: ReferencesProps) {
         }
 
         return (
-            <section class="item clearfix">
+            <section class="item clearfix" key={i}>
                 {referenceTag}
                 {nameTag}
             </section>

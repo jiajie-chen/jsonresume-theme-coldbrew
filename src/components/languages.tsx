@@ -10,7 +10,7 @@ export function Languages({ resumeLanguages }: LanguagesProps) {
         return null
     }
 
-    const languageInnerItems = resumeLanguages.map((lang) => {
+    const languageInnerItems = resumeLanguages.map((lang, i) => {
         if (lang.language === undefined) {
             return null
         }
@@ -21,7 +21,7 @@ export function Languages({ resumeLanguages }: LanguagesProps) {
         }
 
         return (
-            <li>
+            <li key={i}>
                 <h6>
                     {lang.language} {fluencyTag}
                 </h6>

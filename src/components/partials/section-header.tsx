@@ -21,9 +21,8 @@ export function SectionHeader({
         let nameInner = <>{name}</>
         if (website !== undefined) {
             nameInner = (
-                <a href={website} target="_blank">
-                    {name}{' '}
-                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                <a href={website} target="_blank" rel="noreferrer">
+                    {name} <i class="fa fa-external-link" aria-hidden="true" />
                 </a>
             )
         }
@@ -35,7 +34,7 @@ export function SectionHeader({
     if (releaseDate !== undefined) {
         dateInner = <>{formatDate(releaseDate)}</>
     } else if (startDate !== undefined) {
-        let startDateInner = (
+        const startDateInner = (
             <span class="startDate">{formatDate(startDate)}</span>
         )
         let endDateInner = <span class="endDate"> - Present</span>

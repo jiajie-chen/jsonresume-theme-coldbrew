@@ -10,7 +10,7 @@ export function Skills({ resumeSkills }: SkillsProps) {
         return null
     }
 
-    const skillsItems = resumeSkills.map((skill) => {
+    const skillsItems = resumeSkills.map((skill, i) => {
         let nameTag = null
         if (skill.name !== undefined) {
             nameTag = <Title value={skill.name} />
@@ -25,8 +25,8 @@ export function Skills({ resumeSkills }: SkillsProps) {
         if (skill.keywords !== undefined && skill.keywords.length > 0) {
             keywordItems = (
                 <ul class="minimal">
-                    {skill.keywords.map((keyword) => (
-                        <li>
+                    {skill.keywords.map((keyword, i) => (
+                        <li key={i}>
                             <h6>{keyword}</h6>
                         </li>
                     ))}
@@ -35,7 +35,7 @@ export function Skills({ resumeSkills }: SkillsProps) {
         }
 
         return (
-            <section class="container">
+            <section class="container" key={i}>
                 {nameTag}
                 {levelTag}
                 {keywordItems}

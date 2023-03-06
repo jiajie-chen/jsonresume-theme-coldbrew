@@ -17,7 +17,7 @@
 }
 
 .clearfix {
-    @include clearfix();
+    @include clearfix;
 }
 
 .profile-pic {

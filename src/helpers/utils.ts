@@ -2,8 +2,9 @@ import { DateTime } from 'luxon'
 import {
     formatAddress as formatAddressByCountry,
     loadCountries,
+    Country,
+    Address,
 } from '@shopify/address'
-import type { Country, Address } from '@shopify/address'
 
 /**
  *
@@ -28,11 +29,11 @@ export function formatDate(dateString: string): string {
         return isoParsed.toFormat('MM/yyyy')
     } else if (rfcParsed.isValid) {
         return rfcParsed.toFormat('MM/yyyy')
-    } else {
-        throw new Error(
-            `Could not parse date due to errors: (iso: ${isoParsed.invalidReason}) (rfc2822: ${rfcParsed.invalidReason})`
-        )
     }
+
+    throw new Error(
+        `Could not parse date due to errors: (iso: ${isoParsed.invalidReason}) (rfc2822: ${rfcParsed.invalidReason})`
+    )
 }
 
 /**
@@ -63,7 +64,7 @@ export function formatAddress(
     const addressObj: Address = {
         address1: addressLine1,
         address2: addressLines2.join(' '),
-        city: city,
+        city,
         zip: postalCode,
         country: countryCode,
     }

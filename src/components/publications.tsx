@@ -11,7 +11,7 @@ export function Publications({ resumePublications }: PublicationsProps) {
         return null
     }
 
-    const publicationItems = resumePublications.map((pub) => {
+    const publicationItems = resumePublications.map((pub, i) => {
         let publisherTag = null
         if (pub.publisher !== undefined) {
             publisherTag = <h5 class="awarder">{pub.publisher}</h5>
@@ -22,7 +22,7 @@ export function Publications({ resumePublications }: PublicationsProps) {
             summaryTag = <p class="summary">{pub.summary}</p>
         }
         return (
-            <section class="item">
+            <section class="item" key={i}>
                 <SectionHeader
                     name={pub.name}
                     releaseDate={pub.releaseDate}

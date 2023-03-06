@@ -11,7 +11,7 @@ export function Work({ resumeWork }: WorkProps) {
         return null
     }
 
-    const workItems = resumeWork.map((work) => {
+    const workItems = resumeWork.map((work, i) => {
         let positionTag = null
         if (work.position !== undefined) {
             positionTag = <h4>{work.position}</h4>
@@ -26,15 +26,15 @@ export function Work({ resumeWork }: WorkProps) {
         if (work.highlights !== undefined && work.highlights.length > 0) {
             highlightItems = (
                 <ul>
-                    {work.highlights.map((highlight) => (
-                        <li>{highlight}</li>
+                    {work.highlights.map((highlight, i) => (
+                        <li key={i}>{highlight}</li>
                     ))}
                 </ul>
             )
         }
 
         return (
-            <section class="item">
+            <section class="item" key={i}>
                 <SectionHeader
                     name={work.name}
                     startDate={work.startDate}

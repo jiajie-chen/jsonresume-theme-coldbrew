@@ -11,7 +11,7 @@ export function Awards({ resumeAwards }: AwardsProps) {
         return null
     }
 
-    const awardItems = resumeAwards.map((award) => {
+    const awardItems = resumeAwards.map((award, i) => {
         const awardHeader = (
             <SectionHeader name={award.title} releaseDate={award.date} />
         )
@@ -27,7 +27,7 @@ export function Awards({ resumeAwards }: AwardsProps) {
         }
 
         return (
-            <section class="item">
+            <section class="item" key={i}>
                 {awardHeader}
                 {awarderTag}
                 {summaryTag}

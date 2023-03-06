@@ -25,11 +25,8 @@ export function About({ resumeBasics, countryFormatters }: AboutProps) {
         locationTag = (
             <InfoTag icon="fa-map-marker">
                 {/* add line break to each address line */}
-                {formattedAddress.map((a) => (
-                    <>
-                        {a}
-                        <br />
-                    </>
+                {formattedAddress.map((addr, i) => (
+                    <p key={i}>{addr}</p>
                 ))}
             </InfoTag>
         )
@@ -60,14 +57,13 @@ export function About({ resumeBasics, countryFormatters }: AboutProps) {
 
     let socialProfileItems = null
     if (resumeBasics?.profiles !== undefined) {
-        socialProfileItems = resumeBasics.profiles.map((social) => {
-            return (
-                <SocialTag
-                    username={social.username}
-                    network={social.network}
-                />
-            )
-        })
+        socialProfileItems = resumeBasics.profiles.map((social, i) => (
+            <SocialTag
+                key={i}
+                username={social.username}
+                network={social.network}
+            />
+        ))
     }
 
     return (

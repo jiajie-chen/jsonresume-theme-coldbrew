@@ -3,6 +3,7 @@
 
     .fa {
         @include font-size(3.5);
+
         width: 12px;
         margin-right: spacing(1);
         text-align: center;
@@ -33,6 +34,7 @@
 
     .info-text {
         @include font-size(2.25);
+
         display: inline-block;
         vertical-align: middle;
         width: $aside-width - $aside-margin - 1;

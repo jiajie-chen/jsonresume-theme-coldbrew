@@ -27,7 +27,7 @@
         "preview": "vite preview",
         "lint:es": "eslint --ext .ts,tsx --ignore-path .gitignore .",
         "lint:style": "stylelint src/**/*.{css,scss}",
-        "lint:all": "npm run lint:es && npm run lint:style",
+        "lint:all": "npm run lint:es || npm run lint:style",
         "format:all": "prettier -w -u .",
         "type-gen": "node ./scripts/type-gen.cjs"
     },

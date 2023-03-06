@@ -11,13 +11,13 @@ export function Education({ resumeEducation }: EducationProps) {
         return null
     }
 
-    const educationItems = resumeEducation.map((education) => {
+    const educationItems = resumeEducation.map((education, i) => {
         let locationTag = null
         if (education.location !== undefined) {
             locationTag = <h5 class="location">{education.location}</h5>
         }
 
-        let studyAreaText = []
+        const studyAreaText = []
         if (education.studyType !== undefined) {
             studyAreaText.push(education.studyType)
         }
@@ -36,22 +36,24 @@ export function Education({ resumeEducation }: EducationProps) {
 
         let specializationTag = null
         if (education.specialization !== undefined) {
-            ;<h5 class="specialization">{education.specialization}</h5>
+            specializationTag = (
+                <h5 class="specialization">{education.specialization}</h5>
+            )
         }
 
         let courseItems = null
         if (education.courses !== undefined && education.courses.length > 0) {
             courseItems = (
                 <ul class="two-column">
-                    {education.courses.map((course) => (
-                        <li>{course}</li>
+                    {education.courses.map((course, i) => (
+                        <li key={i}>{course}</li>
                     ))}
                 </ul>
             )
         }
 
         return (
-            <section class="item">
+            <section class="item" key={i}>
                 <SectionHeader
                     name={education.institution}
                     startDate={education.startDate}

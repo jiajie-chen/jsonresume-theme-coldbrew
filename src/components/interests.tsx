@@ -10,7 +10,7 @@ export function Interests({ resumeInterests }: InterestsProps) {
         return null
     }
 
-    const interestItems = resumeInterests.map((item) => {
+    const interestItems = resumeInterests.map((item, i) => {
         let nameTag = null
         if (item.name !== undefined) {
             nameTag = <h4 class="bold">{item.name}</h4>
@@ -20,15 +20,15 @@ export function Interests({ resumeInterests }: InterestsProps) {
         if (item.keywords !== undefined && item.keywords.length > 0) {
             keywordItems = (
                 <ul class="minimal">
-                    {item.keywords.map((keyword) => (
-                        <li>{keyword}</li>
+                    {item.keywords.map((keyword, i) => (
+                        <li key={i}>{keyword}</li>
                     ))}
                 </ul>
             )
         }
 
         return (
-            <section class="item">
+            <section class="item" key={i}>
                 {nameTag}
                 {keywordItems}
             </section>
