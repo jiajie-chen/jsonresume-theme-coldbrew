@@ -1,4 +1,4 @@
-import { formatDate } from '../../helpers/utils'
+import { formatDate } from '/@/helpers/utils'
 
 type SectionHeaderProps = {
     name?: string

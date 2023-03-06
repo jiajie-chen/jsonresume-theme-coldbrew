@@ -1,6 +1,6 @@
-import { ResumeSchema } from '../types/resume'
-import { SectionHeader } from './partials/section-header'
-import { Title } from './partials/title'
+import { ResumeSchema } from '/@/types/resume'
+import { SectionHeader } from '/@/components/partials/section-header'
+import { Title } from '/@/components/partials/title'
 
 type VolunteerProps = {
     resumeVolunteer?: ResumeSchema['volunteer']

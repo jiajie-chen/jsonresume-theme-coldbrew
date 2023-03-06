@@ -1,10 +1,10 @@
 import { render } from 'preact'
-import { Resume } from './resume'
-import sampleResumeJson from './assets/resume-sample.json'
-import type { ResumeSchema } from './types/resume'
-import type { ColdbrewResumeMeta } from './types/resume-meta'
-import { loadCountryFormatters } from './helpers/utils'
-import './styles/main.scss'
+import { Resume } from '/@/resume'
+import sampleResumeJson from '/@/assets/resume-sample.json'
+import type { ResumeSchema } from '/@/types/resume'
+import type { ColdbrewResumeMeta } from '/@/types/resume-meta'
+import { loadCountryFormatters } from '/@/helpers/utils'
+import '/@/styles/main.scss'
 
 const sampleResume = sampleResumeJson as ResumeSchema
 const coldbrewMeta = sampleResume.meta as ColdbrewResumeMeta | undefined

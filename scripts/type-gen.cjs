@@ -1,8 +1,8 @@
 // basic script for generating typescript definitions for compatibility
-const fs = require('fs')
-const path = require('path')
-const json2ts = require('json-schema-to-typescript')
-const resumeSchema = require('resume-schema')
+import fs from 'fs'
+import path from 'path'
+import json2ts from 'json-schema-to-typescript'
+import resumeSchema from 'resume-schema'
 
 async function generate() {
     fs.mkdirSync(path.resolve(__dirname, '../src/types/'), { recursive: true })

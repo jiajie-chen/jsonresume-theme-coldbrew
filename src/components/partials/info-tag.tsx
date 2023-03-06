@@ -1,5 +1,5 @@
 import { ComponentChildren } from 'preact'
-import { removeProtocol } from '../../helpers/utils'
+import { removeProtocol } from '/@/helpers/utils'
 
 type InfoTagTextProps = {
     icon?: string

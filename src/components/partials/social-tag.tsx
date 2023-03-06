@@ -1,4 +1,4 @@
-import { InfoTextTag } from './info-tag'
+import { InfoTextTag } from '/@/components/partials/info-tag'
 
 type SocialTagProps = {
     network?: string

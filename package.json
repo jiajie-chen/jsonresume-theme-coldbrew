@@ -26,7 +26,7 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "lint:es": "eslint --ext .ts,tsx --ignore-path .gitignore .",
+        "lint:es": "eslint --ext .js,jsx,ts,tsx,cjs --ignore-path .gitignore .",
         "lint:style": "stylelint src/**/*.{css,scss}",
         "lint:all": "npm run lint:es || npm run lint:style",
         "format:all": "prettier --ignore-unknown --write .",
@@ -75,7 +75,8 @@
             "ecmaFeatures": {
                 "jsx": true
             },
-            "ecmaVersion": "latest",
+            "ecmaVersion": 5,
+            "impliedStrict": true,
             "sourceType": "module"
         },
         "rules": {

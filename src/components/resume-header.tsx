@@ -1,4 +1,4 @@
-import type { ResumeBasicsProps } from '../types/resume-basics'
+import type { ResumeBasicsProps } from '/@/types/resume-basics'
 
 export function ResumeHeader({ resumeBasics }: ResumeBasicsProps) {
     let nameTag = null

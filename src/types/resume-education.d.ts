@@ -1,4 +1,4 @@
-import { ResumeSchema } from './resume'
+import { ResumeSchema } from '/@/types/resume'
 
 /**
  * Extension of ResumeSchema['education'] to include custom fields

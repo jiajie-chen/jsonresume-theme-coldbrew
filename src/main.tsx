@@ -1,9 +1,9 @@
 import { render as preactRender } from 'preact-render-to-string'
-import { loadCountryFormatters } from './helpers/utils'
-import { Resume } from './resume'
-import type { ResumeSchema } from './types/resume'
-import { ColdbrewResumeMeta } from './types/resume-meta'
-import resumeStyle from './styles/main.scss?inline'
+import { loadCountryFormatters } from '/@/helpers/utils'
+import { Resume } from '/@/resume'
+import type { ResumeSchema } from '/@/types/resume'
+import { ColdbrewResumeMeta } from '/@/types/resume-meta'
+import resumeStyle from '/@/styles/main.scss?inline'
 
 export async function render(resume: ResumeSchema | object): Promise<string> {
     const _resume = resume as ResumeSchema

@@ -1,4 +1,4 @@
-import type { ResumeSchema } from '../types/resume'
+import type { ResumeSchema } from '/@/types/resume'
 
 /**
  * Extension of ResumeSchema['basics'] to include custom fields

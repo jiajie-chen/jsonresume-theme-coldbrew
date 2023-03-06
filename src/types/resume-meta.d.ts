@@ -1,4 +1,4 @@
-import type { ResumeSchema } from './resume'
+import type { ResumeSchema } from '/@/types/resume'
 
 /**
  * Extension of ResumeSchema['meta'] field with extra custom data.

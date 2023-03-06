@@ -1,9 +1,9 @@
 import type { Country } from '@shopify/address'
-import { formatAddress } from '../helpers/utils'
-import type { ResumeBasicsProps } from '../types/resume-basics'
-import { InfoTag, InfoTextTag } from './partials/info-tag'
-import { SocialTag } from './partials/social-tag'
-import { Title } from './partials/title'
+import { formatAddress } from '/@/helpers/utils'
+import type { ResumeBasicsProps } from '/@/types/resume-basics'
+import { InfoTag, InfoTextTag } from '/@/components/partials/info-tag'
+import { SocialTag } from '/@/components/partials/social-tag'
+import { Title } from '/@/components/partials/title'
 
 type AboutProps = ResumeBasicsProps & {
     countryFormatters: Country[]

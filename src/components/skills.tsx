@@ -1,5 +1,5 @@
-import { ResumeSchema } from '../types/resume'
-import { Title } from './partials/title'
+import { ResumeSchema } from '/@/types/resume'
+import { Title } from '/@/components/partials/title'
 
 type SkillsProps = {
     resumeSkills?: ResumeSchema['skills']

@@ -1,6 +1,6 @@
-import type { ResumeEducation } from '../types/resume-education'
-import { SectionHeader } from './partials/section-header'
-import { Title } from './partials/title'
+import type { ResumeEducation } from '/@/types/resume-education'
+import { SectionHeader } from '/@/components/partials/section-header'
+import { Title } from '/@/components/partials/title'
 
 type EducationProps = {
     resumeEducation?: ResumeEducation
