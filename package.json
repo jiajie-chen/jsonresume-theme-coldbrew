@@ -15,12 +15,18 @@
         "url": "https://github.com/jiajie-chen/jsonresume-theme-coldbrew"
     },
     "license": "MIT",
+    "engines": {
+        "node": ">=18.14.2"
+    },
     "module": "./dist/main.js",
     "exports": {
         ".": {
             "import": "./dist/main.js"
         }
     },
+    "files": [
+        "./dist/main.js"
+    ],
     "scripts": {
         "setup": "npm run setup:husky",
         "dev": "vite",

@@ -1,15 +1,20 @@
+# This file is just an added safeguard, since package.json has a 'files' allowlist
+
 # Logs
 logs
 *.log
 npm-debug.log*
 
-# Dependency directory
-node_modules
-
 # Temporary local files
 .tmp
+*.tgz
 
 # Files/Folders used for theme development
+.eslintignore
+.eslintrc.cjs
+.husky
+.node-version
+.vscode
 
 # Keep your personal resume.json private
 resume.json
