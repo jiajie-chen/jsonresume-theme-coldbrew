@@ -25,8 +25,12 @@ export function About({ resumeBasics, countryFormatters }: AboutProps) {
         locationTag = (
             <InfoTag icon="fa-map-marker">
                 {/* add line break to each address line */}
-                {formattedAddress.map((addr, i) => (
-                    <p key={i}>{addr}</p>
+                {formattedAddress.map((addr) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <>
+                        {addr}
+                        <br />
+                    </>
                 ))}
             </InfoTag>
         )

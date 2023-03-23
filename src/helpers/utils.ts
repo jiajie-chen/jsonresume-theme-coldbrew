@@ -32,7 +32,9 @@ export function formatDate(dateString: string): string {
     }
 
     throw new Error(
-        `Could not parse date due to errors: (iso: ${isoParsed.invalidReason}) (rfc2822: ${rfcParsed.invalidReason})`
+        'Could not parse date due to errors:' +
+            ` (iso: ${isoParsed.invalidReason ?? 'unknown'})` +
+            ` (rfc2822: ${rfcParsed.invalidReason ?? 'unknown'})`
     )
 }
 

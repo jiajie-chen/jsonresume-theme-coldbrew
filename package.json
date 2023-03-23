@@ -22,15 +22,17 @@
         }
     },
     "scripts": {
-        "prepare:husky": "husky install",
+        "setup": "npm run setup:husky",
         "dev": "vite",
-        "build": "tsc && vite build",
-        "preview": "vite preview",
-        "lint:es": "eslint --ext .js,jsx,ts,tsx,cjs --ignore-path .gitignore .",
+        "lint": "npm run lint:es || npm run lint:style",
+        "build": "npm run build:type-gen && npm run build:vite",
+        "format": "npm run format:prettier",
+        "setup:husky": "husky install",
+        "build:vite": "tsc && vite build",
+        "build:type-gen": "node ./scripts/type-gen.mjs",
+        "lint:es": "eslint --ext .js,jsx,ts,tsx,mjs,cjs .",
         "lint:style": "stylelint src/**/*.{css,scss}",
-        "lint:all": "npm run lint:es || npm run lint:style",
-        "format:all": "prettier --ignore-unknown --write .",
-        "type-gen": "node ./scripts/type-gen.cjs"
+        "format:prettier": "prettier --ignore-unknown --write ."
     },
     "devDependencies": {
         "@preact/preset-vite": "^2.5.0",
@@ -46,7 +48,6 @@
         "lint-staged": "^13.1.2",
         "prettier": "^2.8.4",
         "resume-schema": "^1.0.0",
-        "resumed": "^3.0.1",
         "sass": "^1.58.3",
         "stylelint": "^15.2.0",
         "stylelint-config-standard": "^30.0.1",
@@ -59,6 +60,9 @@
         "luxon": "^3.2.1",
         "preact": "^10.13.0",
         "preact-render-to-string": "^5.2.6"
+    },
+    "peerDependencies": {
+        "resumed": "^3.0.1"
     },
     "stylelint": {
         "extends": [
@@ -73,9 +77,8 @@
         "singleQuote": true
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx,cjs}": "eslint",
-        "*.css": "stylelint",
-        "*.scss": "stylelint --syntax=scss",
+        "*.{js,jsx,ts,tsx,mjs,cjs}": "eslint",
+        "*.{css,scss}": "stylelint",
         "*": "prettier --ignore-unknown --write"
     }
 }

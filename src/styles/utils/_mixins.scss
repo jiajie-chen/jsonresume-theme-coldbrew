@@ -2,9 +2,9 @@
 @import './mixins/media-queries';
 
 @mixin shadow {
-    -webkit-box-shadow: 0 1px 10px rgba(0 0 0 50%);
-    -moz-box-shadow: 0 1px 10px rgba(0 0 0 50%);
-    box-shadow: 0 1px 10px rgba(0 0 0 50%);
+    -webkit-box-shadow: 0 1px 10px rgb(0 0 0 / 50%);
+    -moz-box-shadow: 0 1px 10px rgb(0 0 0 / 50%);
+    box-shadow: 0 1px 10px rgb(0 0 0 / 50%);
 }
 
 @mixin font-size($multiplier: 3) {

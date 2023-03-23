@@ -1,0 +1,15 @@
+# Dependency directory
+node_modules
+
+# Temporary local files
+.tmp
+
+# Public folder from build
+public
+
+# IDEs
+.vscode
+
+# build folders
+public
+dist

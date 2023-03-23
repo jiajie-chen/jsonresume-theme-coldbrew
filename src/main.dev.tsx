@@ -13,5 +13,5 @@ const localeCountries = await loadCountryFormatters(locale)
 
 render(
     <Resume resume={sampleResume} countryFormatters={localeCountries} />,
-    document.body as HTMLElement
+    document.body
 )
