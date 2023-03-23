@@ -1,61 +1,90 @@
 {
-  "author": "Kelvin Nguyen",
-  "name": "jsonresume-theme-caffeine",
-  "description": "Caffeine theme for JSON Resume",
-  "version": "2.0.1",
-  "keywords": [
-    "json",
-    "resume",
-    "jsonresume",
-    "json-resume"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kelyvin/jsonresume-theme-caffeine"
-  },
-  "license": "MIT",
-  "scripts": {
-    "start": "npx gulp && npx resume serve --theme .",
-    "export": "npx gulp && npx resume export resume --format pdf --theme ."
-  },
-  "devDependencies": {
-    "browser-sync": "^2.18.5",
-    "del": "^5.1.0",
-    "gulp": "^4.0.2",
-    "gulp-cache": "^1.1.3",
-    "gulp-cli": "^2.2.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssimport": "^7.0.0",
-    "gulp-csso": "^4.0.1",
-    "gulp-filter": "^6.0.0",
-    "gulp-flatten": "^0.4.0",
-    "gulp-handlebars": "^5.0.2",
-    "gulp-hub": "^4.2.0",
-    "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^6.2.0",
-    "gulp-jshint": "^2.0.4",
-    "gulp-load-plugins": "^2.0.1",
-    "gulp-plumber": "^1.1.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-serve": "^1.4.0",
-    "gulp-size": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "gulp-useref": "^4.0.0",
-    "gulp-wrap": "^0.15.0",
-    "jshint-stylish": "^2.2.1",
-    "lazypipe": "^1.0.1",
-    "opn": "^6.0.0",
-    "require-dir": "^1.2.0",
-    "serve-index": "^1.8.0",
-    "yargs": "^15.0.2"
-  },
-  "dependencies": {
-    "address-format": "0.0.3",
-    "handlebars": "^4.0.5",
-    "handlebars-wax": "^6.1.0",
-    "moment": "^2.17.1",
-    "resume-cli": "2.2.4",
-    "swag": "^0.7.0"
-  }
+    "author": "Jiajie Chen",
+    "name": "@jiajie-chen/jsonresume-theme-coldbrew",
+    "description": "Caffeine theme for JSON Resume, modified for my personal use.",
+    "version": "0.1.0",
+    "type": "module",
+    "keywords": [
+        "json",
+        "resume",
+        "jsonresume",
+        "json-resume"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jiajie-chen/jsonresume-theme-coldbrew"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=18.14.2"
+    },
+    "module": "./dist/main.js",
+    "exports": {
+        ".": {
+            "import": "./dist/main.js"
+        }
+    },
+    "files": [
+        "./dist/main.js"
+    ],
+    "scripts": {
+        "setup": "npm run setup:husky",
+        "dev": "vite",
+        "lint": "npm run lint:es || npm run lint:style",
+        "build": "npm run build:type-gen && npm run build:vite",
+        "format": "npm run format:prettier",
+        "setup:husky": "husky install",
+        "build:vite": "tsc && vite build",
+        "build:type-gen": "node ./scripts/type-gen.mjs",
+        "lint:es": "eslint --ext .js,jsx,ts,tsx,mjs,cjs .",
+        "lint:style": "stylelint src/**/*.{css,scss}",
+        "format:prettier": "prettier --ignore-unknown --write ."
+    },
+    "devDependencies": {
+        "@preact/preset-vite": "^2.5.0",
+        "@types/luxon": "^3.2.0",
+        "@typescript-eslint/eslint-plugin": "^5.54.0",
+        "@typescript-eslint/parser": "^5.54.0",
+        "eslint": "^8.35.0",
+        "eslint-config-preact": "^1.3.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-jsdoc": "^40.0.1",
+        "husky": "^8.0.3",
+        "json-schema-to-typescript": "^12.0.0",
+        "lint-staged": "^13.1.2",
+        "prettier": "^2.8.4",
+        "resume-schema": "^1.0.0",
+        "sass": "^1.58.3",
+        "stylelint": "^15.2.0",
+        "stylelint-config-standard": "^30.0.1",
+        "stylelint-config-standard-scss": "^7.0.1",
+        "typescript": "^4.9.5",
+        "vite": "^4.1.4"
+    },
+    "dependencies": {
+        "@shopify/address": "^4.0.6",
+        "luxon": "^3.2.1",
+        "preact": "^10.13.0",
+        "preact-render-to-string": "^5.2.6"
+    },
+    "peerDependencies": {
+        "resumed": "^3.0.1"
+    },
+    "stylelint": {
+        "extends": [
+            "stylelint-config-standard",
+            "stylelint-config-standard-scss"
+        ]
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,mjs,cjs}": "eslint",
+        "*.{css,scss}": "stylelint",
+        "*": "prettier --ignore-unknown --write"
+    }
 }
