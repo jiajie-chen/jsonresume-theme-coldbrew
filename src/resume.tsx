@@ -4,6 +4,7 @@ import { Awards } from '/@/components/awards'
 import { Education } from '/@/components/education'
 import { Interests } from '/@/components/interests'
 import { Languages } from '/@/components/languages'
+import { Projects } from '/@/components/projects'
 import { Publications } from '/@/components/publications'
 import { References } from '/@/components/references'
 import { ResumeHeader } from '/@/components/resume-header'
@@ -39,6 +40,7 @@ export function Resume({ resume, countryFormatters }: ResumeProps) {
                     <Education resumeEducation={resume.education} />
                     <Awards resumeAwards={resume.awards} />
                     <Publications resumePublications={resume.publications} />
+                    <Projects resumeProjects={resume.projects} />
                     <References resumeReferences={resume.references} />
                 </div>
             </div>
