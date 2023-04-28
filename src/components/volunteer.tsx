@@ -19,7 +19,7 @@ export function Volunteer({ resumeVolunteer }: VolunteerProps) {
 
         let summaryTag = null
         if (volunteer.summary !== undefined) {
-            summaryTag = <p class="summary">{summaryTag}</p>
+            summaryTag = <p class="summary">{volunteer.summary}</p>
         }
 
         let highlightItems = null

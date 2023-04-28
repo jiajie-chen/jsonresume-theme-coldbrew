@@ -18,9 +18,9 @@ export function Projects({ resumeProjects }: ProjectsProps) {
             entityTag = <h5 class="awarder">{proj.entity}</h5>
         }
 
-        let summaryTag = null
-        if (proj.summary !== undefined) {
-            summaryTag = <p class="summary">{proj.description}</p>
+        let descriptionTag = null
+        if (proj.description !== undefined) {
+            descriptionTag = <p class="summary">{proj.description}</p>
         }
 
         let highlightItems = null
@@ -43,7 +43,7 @@ export function Projects({ resumeProjects }: ProjectsProps) {
                     website={proj.url}
                 />
                 {entityTag}
-                {summaryTag}
+                {descriptionTag}
                 {highlightItems}
             </section>
         )
