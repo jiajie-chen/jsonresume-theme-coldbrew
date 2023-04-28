@@ -12,14 +12,15 @@ export function Projects({ resumeProjects }: ProjectsProps) {
     }
 
     const projectItems = resumeProjects.map((proj, i) => {
-        let projTag = null
-        if (proj.publisher !== undefined) {
-            projTag = <h5 class="awarder">{proj.publisher}</h5>
+        let entityTag = null
+        if (proj.entity !== undefined) {
+            // TODO: for now, use same style as 'awarder' in Publications
+            entityTag = <h5 class="awarder">{proj.entity}</h5>
         }
 
         let summaryTag = null
         if (proj.summary !== undefined) {
-            summaryTag = <p class="summary">{proj.summary}</p>
+            summaryTag = <p class="summary">{proj.description}</p>
         }
 
         let highlightItems = null
@@ -41,7 +42,7 @@ export function Projects({ resumeProjects }: ProjectsProps) {
                     endDate={proj.endDate}
                     website={proj.url}
                 />
-                {projTag}
+                {entityTag}
                 {summaryTag}
                 {highlightItems}
             </section>
@@ -49,6 +50,7 @@ export function Projects({ resumeProjects }: ProjectsProps) {
     })
 
     return (
+        // TODO: for now, use same style as 'work-container' in Work
         <div class="container work-container">
             <Title value="Projects" />
             {projectItems}
