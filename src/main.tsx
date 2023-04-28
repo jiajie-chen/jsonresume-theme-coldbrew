@@ -2,14 +2,16 @@ import { render as preactRender } from 'preact-render-to-string'
 import { loadCountryFormatters } from '/@/helpers/utils'
 import { Resume } from '/@/resume'
 import type { ResumeSchema } from '/@/types/resume'
-import { ColdbrewResumeMeta } from '/@/types/resume-meta'
+import type { ColdbrewResumeMeta } from '/@/types/resume-meta'
 import resumeStyle from '/@/styles/main.scss?inline'
 
 export async function render(resume: ResumeSchema | object): Promise<string> {
+    // TODO: validatation of resume
     const _resume = resume as ResumeSchema
     const coldbrewMeta = _resume.meta as ColdbrewResumeMeta | undefined
     const locale = coldbrewMeta?.coldbrewTheme?.locale ?? 'en'
 
+    // this is done outside of the components to avoid async logic in Preact
     const localeCountries = await loadCountryFormatters(locale)
 
     const resumeHtml = (
@@ -31,7 +33,7 @@ export async function render(resume: ResumeSchema | object): Promise<string> {
                 <style dangerouslySetInnerHTML={{ __html: resumeStyle }} />
             </head>
             <body>
-                <Resume resume={resume} countryFormatters={localeCountries} />
+                <Resume resume={_resume} countryFormatters={localeCountries} />
             </body>
         </html>
     )
