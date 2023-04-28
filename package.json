@@ -2,7 +2,7 @@
     "author": "Jiajie Chen",
     "name": "@jiajie-chen/jsonresume-theme-coldbrew",
     "description": "Caffeine theme for JSON Resume, modified for my personal use.",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "type": "module",
     "keywords": [
         "json",
